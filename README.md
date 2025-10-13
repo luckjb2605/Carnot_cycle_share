@@ -1,1 +1,0 @@
-# Carnot_cycle_share
