@@ -1,0 +1,371 @@
+\documentclass[12pt, twocolumn]{article}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[numbers]{natbib}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{authblk}
+\usepackage{enumitem}
+\usepackage{newtxtext, newtxmath}
+\usepackage{cleveref}
+\usepackage{abstract}
+\usepackage{hyphenat}
+
+\crefname{equation}{Eq.}{Eq.}
+
+\geometry{a4paper, left=1.5cm, right=1.5cm, top=2cm, bottom=2cm, columnsep=1cm}
+\setstretch{1.1}
+
+\titleformat{\section}
+  {\normalfont\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+\renewcommand{\abstractname}{}
+\setlength{\absleftindent}{0pt}
+\setlength{\absrightindent}{0pt}
+
+\setlist[enumerate,1]{label=\Alph*:, ref=\Alph*}
+
+\setlength{\parindent}{1cm}
+
+\renewcommand\Authands{ e }
+\renewcommand\Authand{ e }
+
+\title{Motor de Carnot e os Limites Termodinâmicos da Eficiência}
+\author{Alice Reis}
+\author{João Guilherme}
+\author{Lucas Jalles}
+\author{Luíza Lee}
+\author{Marcela Messala}
+\author{Sophia Mayumi}
+\affil{CAP-UFRJ}
+\date{Outubro 2025}
+
+\begin{document}
+
+\twocolumn[
+\begin{@twocolumnfalse}
+\maketitle
+\begin{abstract}
+\noindent
+
+ No presente arquivo, buscamos apresentar e explicar o funcionamento do motor de Carnot. Tal ciclo termodinâmico 
+ foi teorizado por Sadi Carnot com o intuito de estabelecer a máxima eficiência dos motores térmicos operando
+ entre dois reservatórios de temperatura, um de alta temperatura ($T_a$), e outro de baixa ($T_b$). Discutiremos 
+ as quatro etapas e derivaremos a equação fundamental da eficiência $\eta = 1 - T_b/T_a$ para então explicar a 
+ impossibilidade teórica de realmente alcançar 100\% de eficiência. Além disso, analisaremos as contradições às 
+ leis da termodinâmicas do motor.
+
+\end{abstract}
+\bigskip
+\end{@twocolumnfalse}
+]
+
+\section{Introdução}
+
+Sadi Carnot (1796-1832) foi um importante cientista francês, filho de um dos generais de Napoleão Bonaparte. 
+Em sua obra de 1824, Réflexions sur la puissance motrice du feu et sur les machines propres à développer cette 
+puissance (Reflexões sobre a Potência Motriz do Fogo e Máquinas Próprias para Aumentar essa Potência), o 
+físico discute a importância dos motores a vapor e apresenta seu motor reversível, cuja eficiência dependia 
+apenas das temperaturas de fontes quentes e frias.
+
+O modelo de Carnot foi importante, e é até hoje, pois foi ele o utilizado para fazer as máquinas do século XIX 
+na Revolução Industrial. Além disso, até hoje ele é o modelo mais usado para fabricação de motores no geral.
+
+A partir disso, foi possível mostrar que era impossível criar uma máquina com 100\% de eficiência, 
+devido principalmente a não se adequar à primeira lei da termodinâmica.
+
+\section{O Motor de Carnot}
+
+Carnot foi pioneiro na pesquisa de um modelo de motor 100\% eficiente. Ele seria constituído por um cilindro 
+cujo único orifício separando o meio interno do externo ficaria na parte inferior. Dentro, haveria um fluído
+ideal (fluido ideal ou perfeito; de viscosidade nula) e um pistão que comprimiria o fluido, exercendo nele 
+pressão. O funcionamento seria baseado em um estômago de unicórnio, onde o mundo é perfeito. Não seria possível 
+entrar ou sair calor em qualquer outro lugar dessa máquina, desprezando suas trocas de calor 
+(seja por condução, convecção ou irradiação) e o atrito do sistema.
+
+No modelo, existiria uma força externa empurrando o pistão, uma barra de alta temperatura e outra de baixa 
+temperatura. Ambas as temperaturas não deveriam variar ao longo do experimento, mesmo sob calor. Tendo que ser 
+suficientemente grandes para tal.
+
+\subsection{As quatro etapas do Ciclo de Carnot}
+
+No primeiro momento, se colocaria a barra quente no orifício que permite trocas de calor, ao mesmo tempo que se 
+retiraria alguma pressão sob o pistão. O gás se expandiria, mas não esfriaria, visto que a barra quente 
+transferiria $Q_1$ para o gás, mantendo sua temperatura. O processo seguirá o de uma expansão isotérmica, ou seja,
+sem variação na temperatura.
+
+Em seguida, se tiraria mais pressão e, também, a barra quente. O gás continuaria a se expandir, mas agora, 
+sem a barra quente, esfriaria. Com a variação, então, de temperatura, mas não de calor, o processo é nomeado de 
+expansão adiabática.
+
+Quando atingisse a mesma temperatura da barra fria, essa seria colocada na entrada de calor, e a força externa 
+no pistão seria aumentada, comprimindo o gás. Ao ser comprimido, se esperaria aumento na temperatura, mas tal 
+não se segue, pois o calor $Q_2$ vai para a barra fria. Novamente, sem variação de temperatura, o terceiro 
+processo é chamado de compressão isotérmica.
+
+O quarto e último processo é a compressão adiabática. Similarmente ao segundo processo, a fonte de calor 
+(que agora age como um ralo de calor) é retirada, mas inversamente a ele, adicionamos pressão para que 
+haja, na verdade, compressão (note que a pressão total após essa última adição será igual à inicial). 
+Sem o ralo de calor, o gás, comprimindo, esquentará até a temperatura inicial.
+
+No fim de todos os estágios, o sistema e todos os seus parâmetros voltam ao estado que se encontravam 
+anteriormente ao processo um. Dizemos então que o experimento é um ciclo com todos os seus estágios sendo 
+reversíveis. O Ciclo de Carnot é constituído por essas duas expansões iniciais e então duas compressões, 
+alternando entre processos isotérmicos e adiabáticos. Durante os processos isotérmicos, há transferência 
+de calor $Q_1$ e $Q_2$ para dentro e fora do fluido respectivamente.
+
+A diferença entre os valores $Q_1$ e $Q_2$ é o coração da eficiência do motor. 
+Usando da proporcionalidade, podemos dizer que a diferença entre a temperatura máxima e mínima é similarmente 
+conectada à eficiência. E essa relação pode ser descrita por uma equação que nos ajudará a entender o porquê 
+do motor ser impossível de ser recriado.
+
+\subsection{Derivação da equação de eficiência}
+
+Para chegar no cálculo da eficiência, precisamos antes entender o que essa significa e como calculá-la. 
+Para isso, pense em lucro, A diferença entre a arrecadação e o prejuízo. Similarmente, a eficiência 
+representará quanto de energia útil (arrecadação), nesse caso, trabalho, o motor produzirá ao consumir 
+energia que damos ao sistema, nesse caso, $Q_1$ (prejuízo). 
+
+Calculamos então a razão entre os dois para obter o resultado como uma porcentagem. Claro que, diferentemente 
+do caso do lucro, não poderemos arrecadar mais energia do que investimos. Não se é possível criar energia. 
+Por tanto, podemos apenas tentar se aproximar o máximo possível do 100\%. Sendo essa a premissa do motor 
+de Carnot.
+
+Tendo isso em mente, descreveremos a eficiência como:
+
+\begin{equation}\label{eq:eficiencia}
+\text{Eficiência} = \frac{W_{\text{total}}}{Q_1}
+\end{equation}
+
+Calcularemos então, o trabalho feito em cada estágio. Para os processos isotérmicos podemos estabelecer:
+
+\begin{equation}\label{eq:work_iso_general}
+W_{\text{isot.}} = \int_{V_i}^{V_f} P \,dV
+\end{equation}
+
+E considerando a lei dos gases ideias:
+
+\begin{equation}\label{eq:ideal_gas_law}
+PV=nRT, \quad P=\frac{nRT}{V}
+\end{equation}
+
+Substituímos:
+
+\begin{equation}\label{eq:work_iso_subst}
+W_{\text{isot.}} = \int_{V_i}^{V_f} \frac{nRT}{V} \,dV
+\end{equation}
+
+Tirando as constantes da integração, resta apenas integrar 1/V:
+
+\begin{equation}\label{eq:work_iso_integrated}
+W_{\text{isot.}} = nRT\ln\left({\frac{V_f}{V_i}}\right)
+\end{equation}
+
+É possível concluir então, que para o processo de expansão isotérmica teremos:
+
+\begin{equation}\label{eq:work_1to2}
+W_{1\rightarrow2} = nRT_{a}\ln\left({\frac{V_2}{V_1}}\right) =Q_{1\rightarrow2}
+\end{equation}
+
+Onde $W = Q$, já que não há diferença na temperatura. Para o processo de compressão isotérmica 
+obteremos, similarmente:
+
+\begin{equation}\label{eq:work_3to4}
+W_{3\rightarrow4} = nRT_{b}\ln\left({\frac{V_4}{V_3}}\right)=Q_{3\rightarrow4}
+\end{equation}
+
+Partiremos então para um melhor entendimento da relação entre calor e trabalho para os processos adiabáticos. 
+Para isso, recuperaremos a definição de capacidade térmica molar à volume constante:
+
+\begin{equation}\label{eq:cv_definition}
+C_v = \frac{1}{n}\,\left(\frac{\partial Q}{\partial T}\right)_V
+\end{equation}
+
+Se o volume é constante, podemos inferir que $\ W = 0$ e, por tanto, podemos igualar dU e dQ. 
+Isolando dU, integramos de ambos os lados para obter:
+
+\begin{equation}\label{eq:internal_energy}
+dU_v = dQ_v = nC_vdT,
+\end{equation}
+
+\begin{equation}\label{eq:internal_energy_2}
+\int_{U_i}^{U_f}dU = \int_{Ti}^{Tf}nC_v\,dT \rightarrow \Delta U = nC_v\Delta T
+\end{equation}
+
+Embora pareça contraintuitivo, podemos usar essa relação mesmo para gases em expansão e compressão, 
+contanto que sejam ideais. Isso se dá pois, para esses gases, a energia interna é uma função da temperatura apenas. 
+Sendo possível desprezar a diferença de volume.
+
+Considerando $Q = 0$ para os processos adiabáticos, teremos que $|W| = |\Delta U|$ . 
+E como acabamos de demonstrar esse valor, basta substituir em:
+
+\vspace{2cm}
+
+\begin{equation}\label{eq:work_2to3}
+W_{2\rightarrow3} = -nC_v(T_b-T_a) = -\Delta U_{2\rightarrow3},
+\end{equation}
+
+\begin{equation}\label{eq:work_4to1}
+W_{4\rightarrow1} = -nC_v(T_a-T_b) = -\Delta U_{4\rightarrow1}
+\end{equation}
+
+Note que na \cref{eq:work_2to3} o trabalho está sendo feito pelo gás, representando direta e exclusivamente a 
+diminuição de sua energia interna. Mas então, W não deveriam ser positivo? Ele é! 
+Perceba que $(T_b-T_a)<0$ e, por tanto, o termo inteiro é positivo!
+
+Note também que o trabalho e variação de energia interna para os dois processos adiabáticos são um o inverso 
+do outro. Essa relação será importante na hora de calcular a eficiência, já que não precisaremos representá-los.
+
+Agora que definimos os parâmetros mais importantes das quatro etapas, voltaremos à \cref{eq:eficiencia}, e 
+substituiremos o $W_{\text{total}}$ pela soma do trabalho feito pelo gás ao longo dos processos isotérmicos 
+(lembrando que os processos adiabáticos se anulam), e representaremos $Q_1$ por seu valor dado na \cref{eq:work_1to2}:
+
+\begin{equation}\label{eq:eficiencia_expandida}
+\text{Eficiência} = \frac{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right) + nRT_{b}\ln\left({\frac{V_4}{V_3}}\right)}{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right)}
+\end{equation}
+
+Considerando que o processo geratriz dos termos foi de expansão adiabática, podemos escrever:
+
+\begin{equation}\label{eq:adiabatic1}
+T_3 V_3^{\gamma-1} = T_4 V_4^{\gamma-1},\; \text{onde}
+\end{equation}
+
+\begin{equation}\label{eq:gamma_def}
+\gamma = \frac{C_p}{C_v}
+\end{equation}
+
+Do termo de capacidade térmica molar à pressão constante $C_p$ podemos descrever que:
+
+\begin{equation}\label{eq:qp_geral}
+Q_p=\Delta U_p +W_p=\Delta U_p+P\Delta V
+\end{equation}
+
+Onde conhecemos sobre as relações dos gases ideais, e por motivos já discutidos, que:
+
+\begin{equation}\label{eq:ideal_gas_again}
+PV=nRT,
+\end{equation}
+
+\begin{equation}\label{eq:dU_relation}
+\Delta U_p = \Delta U_v = nC_v\Delta T    
+\end{equation}
+
+Substituindo as equações \cref{eq:dU_relation} e \cref{eq:ideal_gas_again} na \cref{eq:qp_geral}, obtemos:
+
+\begin{equation}\label{eq:qp_calculated}
+Q_p = nC_v\Delta T + nR\Delta T = n(C_v+R)\Delta T
+\end{equation}
+
+E sabemos que $Q_p = nC_p\Delta T$ (por derivação similar à que fizemos para $C_v$), por tanto, 
+podemos afirmar que $C_p = C_v + R$\,.
+
+Finalmente, com esse resultado, podemos escrever, da \cref{eq:adiabatic1} e \cref{eq:gamma_def}:
+
+\begin{equation}\label{eq:adiabatic_rel1}
+\left(\frac{T_2}{T_3}\right)^{C_v/R} = \frac{V_3}{V_2}
+\end{equation}
+
+\begin{equation}\label{eq:adiabatic_rel2}
+\left(\frac{T_1}{T_4}\right)^{C_v/R} = \frac{V_4}{V_1}
+\end{equation}
+
+A partir da natureza do Ciclo, adicionamos que $T_1 = T_2$ e $T_3 = T_4$. Igualando então as equações e 
+substituindo os termos, concluímos que:
+
+\begin{equation}\label{eq:volume_relation}
+\frac{V_3}{V_4} = \frac{V_2}{V_1}
+\end{equation}
+
+Substituindo a \cref{eq:volume_relation} na \cref{eq:eficiencia_expandida} obtemos:
+
+\begin{equation}\label{eq:eficiencia_simplificada_2}
+\text{Eficiência} = \frac{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right) + nRT_{b}\ln\left({\frac{V_2}{V_1}}\right)}{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right)}
+\end{equation}
+
+Cancelando os termos semelhantes, chegamos a:
+
+\begin{equation}\label{eq:eficiencia_simplificada}
+\text{Eficiência} = \frac{T_a - T_b}{T_a}
+\end{equation}
+
+Ou ainda:
+
+\begin{equation}\label{eq:eficiencia_final}
+\eta = 1 - \frac{T_b}{T_a}
+\end{equation}
+
+A partir da \cref{eq:eficiencia_final}, observamos então que a eficiência só será 1 (100\%), 
+se ${T_b}/{T_a} = 0$. Ou seja, se $T_b = 0$ ou $T_a = \infty$. Ou seja, se a temperatura do ferro mais frio 
+for zero absoluto ou a temperatura do ferro mais quente for infinita. 
+
+\section{Porque um Motor não pode ter 100\% de eficiência}
+
+Um motor nunca pode chegar a 100\% de eficiência pois para isso seria necessário contraditar 2 leis da termodinâmica.
+
+\begin{enumerate}
+\item O universo tende ao caos e à entropia, ou seja, a energia sempre quer se dispersar. E quando ela se 
+dispersa não pode mais ser usada para gerar trabalho.
+\item Energia tem que vir de algum lugar e deve ir a algum lugar, ou seja, não é possível criar energia do 
+nada ou mantê-la no mesmo sistema para sempre.
+\end{enumerate}
+
+Para que um motor tivesse 100\% de eficiência, seria necessário que a fonte de calor tivesse um valor 
+infinitamente alto ou que a fonte fria tivesse o valor igual a 0 
+(e um lugar infinitamente grande para o gás expandir). Isso pode ser observado na \cref{eq:eficiencia_final}
+
+Se $T_b=0$, então $0/\text{qualquer coisa}=0$ e $1-0=100\%$. Se $T_a=\infty$, qualquer coisa/$\infty$ tende a 0 e
+, portanto, Eficiência$=100\%$.
+
+Não existe uma fonte de calor infinita, pois seria necessário algo que vai contra a lei de que a energia tem 
+que vir de algum lugar e não energia infinita no universo.
+
+E não existe uma forma de atingir 0 graus Kelvin até onde nós sabemos. Nós conseguimos chegar bem próximo 
+em um sistema fechado, mas quanto mais próximo mais difícil. 
+Também é impossível criar um recipiente infinitamente longo para que o gás se expanda até 0 Kelvin.
+
+Terceiramente: As condições para chegar a 100\% de eficiência também ignoram muitas leis do nosso mundo. 
+Como por exemplo a troca de calor entre o gás e o recipiente, o atrito entre as moléculas ou irradiação 
+através do recipiente, e o uso de um gás ideal. Portanto, um motor 100\% eficiente no mundo em que 
+vivemos não passa de um sonho.
+
+\section{Como seria um motor 100\% eficiente?}
+
+Um motor 100\% precisaria de um sistema que não interage com o mundo fora dele em nenhuma forma.
+
+Depois disso temos dois caminhos:
+
+\begin{enumerate}
+\item Fonte de calor infinita: Se tivermos algo que gera calor infinito, a quantidade de calor que 
+escapa do sistema seria irrelevante pois ele é infinito e sua eficiência seria de 100\%.
+\item Fonte de frio capaz de fazer o sistema chegar a 0 Kelvin 
+(precisamos também de um recipiente infinitamente grande): 
+Se formos capazes de chegar a 0 Kelvin, não perderíamos energia para realizar nenhuma parte do ciclo, 
+pois a pressão comprimiria o gás sozinha. Portanto, Eficiência $=100\%$.
+\end{enumerate}
+
+\section{Conclusões}
+
+O ciclo de Carnot estabelece a eficiência máxima teórica para qualquer motor térmico operando 
+entre dois reservatórios de temperatura. Nossa análise demonstra que alcançar 100\% de eficiência requer 
+condições fisicamente impossíveis: ou uma fonte de calor com temperatura infinita ou um sumidouro frio a 
+zero absoluto. Estes requisitos violam princípios termodinâmicos fundamentais, particularmente a primeira e 
+segunda leis. Embora o motor de Carnot permaneça uma construção teórica inestimável para entender os limites 
+da eficiência termodinâmica, motores práticos devem sempre operar abaixo deste máximo ideal devido à inevitável 
+dissipação de energia e aumento de entropia.
+
+\begin{thebibliography}{9}
+\bibitem{carnot1824} Carnot, S. (1824). \emph{Réflexions sur la puissance motrice du feu et sur les machines propres à développer cette puissance}. Bachelier.
+\bibitem{callen1985} Callen, H. B. (1985). \emph{Thermodynamics and an Introduction to Thermostatistics}. John Wiley \& Sons.
+\bibitem{atkins2010} Atkins, P., \& de Paula, J. (2010). \emph{Physical Chemistry}. Oxford University Press.
+\bibitem{santos1999} Santos, F. C. (1999). \emph{Termodinâmica}. Editora da Universidade de São Paulo.
+\end{thebibliography}
+
+\end{document}
