@@ -163,7 +163,7 @@ Substituímos:
 W_{\text{isot.}} = \int_{V_i}^{V_f} \frac{nRT}{V} \,dV
 \end{equation}
 
-Tirando as constantes da integração, resta apenas integrar 1/V:
+Tirando as constantes da integração, resta apenas integrar dV/V:
 
 \begin{equation}\label{eq:work_iso_integrated}
 W_{\text{isot.}} = nRT\ln\left({\frac{V_f}{V_i}}\right)
@@ -175,7 +175,7 @@ W_{\text{isot.}} = nRT\ln\left({\frac{V_f}{V_i}}\right)
 W_{1\rightarrow2} = nRT_{a}\ln\left({\frac{V_2}{V_1}}\right) =Q_{1\rightarrow2}
 \end{equation}
 
-Onde $W = Q$, já que não há diferença na temperatura. Para o processo de compressão isotérmica 
+Onde, da primeira lei da termodinâmica, podemos dizer que $W = Q$, já que não há diferença na temperatura (e por tanto, $\Delta U = 0$). Para o processo de compressão isotérmica 
 obteremos, similarmente:
 
 \begin{equation}\label{eq:work_3to4}
@@ -222,7 +222,7 @@ diminuição de sua energia interna. Mas então, W não deveriam ser positivo? E
 Perceba que $(T_b-T_a)<0$ e, por tanto, o termo inteiro é positivo!
 
 Note também que o trabalho e variação de energia interna para os dois processos adiabáticos são um o inverso 
-do outro. Essa relação será importante na hora de calcular a eficiência, já que não precisaremos representá-los.
+do outro. Essa relação será importante na hora de calcular a eficiência, já que, por isso, não precisaremos representá-los.
 
 Agora que definimos os parâmetros mais importantes das quatro etapas, voltaremos à \cref{eq:eficiencia}, e 
 substituiremos o $W_{\text{total}}$ pela soma do trabalho feito pelo gás ao longo dos processos isotérmicos 
@@ -242,7 +242,8 @@ T_3 V_3^{\gamma-1} = T_4 V_4^{\gamma-1},\; \text{onde}
 \gamma = \frac{C_p}{C_v}
 \end{equation}
 
-Do termo de capacidade térmica molar à pressão constante $C_p$ podemos descrever que:
+A fim de simplificar Cp, consideremos uma transformação à pressão constante. Então, 
+Da primeira lei da termodinâmica, e da definição de trabalho, podemos escrever:
 
 \begin{equation}\label{eq:qp_geral}
 Q_p=\Delta U_p +W_p=\Delta U_p+P\Delta V
@@ -303,8 +304,8 @@ Ou ainda:
 \end{equation}
 
 A partir da \cref{eq:eficiencia_final}, observamos então que a eficiência só será 1 (100\%), 
-se ${T_b}/{T_a} = 0$. Ou seja, se $T_b = 0$ ou $T_a = \infty$. Ou seja, se a temperatura do ferro mais frio 
-for zero absoluto ou a temperatura do ferro mais quente for infinita. 
+se ${T_b}/{T_a} = 0$. Ou seja, se $T_b = 0$ ou $T_a = \infty$. Ou seja, se a temperatura do reservatório mais frio 
+for zero absoluto ou a temperatura do reservatório mais quente for infinita. 
 
 \section{Porque um Motor não pode ter 100\% de eficiência}
 
@@ -319,13 +320,13 @@ nada ou mantê-la no mesmo sistema para sempre.
 
 Para que um motor tivesse 100\% de eficiência, seria necessário que a fonte de calor tivesse um valor 
 infinitamente alto ou que a fonte fria tivesse o valor igual a 0 
-(e um lugar infinitamente grande para o gás expandir). Isso pode ser observado na \cref{eq:eficiencia_final}
+(e um lugar infinitamente grande para o gás expandir). Isso pode ser observado na \cref{eq:eficiencia_final}.
 
 Se $T_b=0$, então $0/\text{qualquer coisa}=0$ e $1-0=100\%$. Se $T_a=\infty$, qualquer coisa/$\infty$ tende a 0 e
 , portanto, Eficiência$=100\%$.
 
 Não existe uma fonte de calor infinita, pois seria necessário algo que vai contra a lei de que a energia tem 
-que vir de algum lugar e não energia infinita no universo.
+que vir de algum lugar, já que não há energia infinita no universo.
 
 E não existe uma forma de atingir 0 graus Kelvin até onde nós sabemos. Nós conseguimos chegar bem próximo 
 em um sistema fechado, mas quanto mais próximo mais difícil. 
@@ -338,9 +339,9 @@ vivemos não passa de um sonho.
 
 \section{Como seria um motor 100\% eficiente?}
 
-Um motor 100\% precisaria de um sistema que não interage com o mundo fora dele em nenhuma forma.
+Um motor 100\% eficiente precisaria de um sistema que não interage com o mundo fora dele em nenhuma forma.
 
-Depois disso temos dois caminhos:
+Além disso, precisariamos escolher um entre dois caminhos:
 
 \begin{enumerate}
 \item Fonte de calor infinita: Se tivermos algo que gera calor infinito, a quantidade de calor que 
@@ -351,13 +352,28 @@ Se formos capazes de chegar a 0 Kelvin, não perderíamos energia para realizar 
 pois a pressão comprimiria o gás sozinha. Portanto, Eficiência $=100\%$.
 \end{enumerate}
 
+Em uma realidade distante da nossa, onde um desses caminhos é possível, 
+viável, e verdadeiramente proveitoso, o sistema solucionaria muitos 
+problemas enormes de nossas vidas. Vivemos em uma era 
+onde energia elétrica é uma necessidade básica e é 
+demandada cada vez mais. Um motor 100\% eficiente nos permitiria gerar 
+muito mais energia pra suprir nossa demanda, aumentar a acessibilidade 
+e reduzir o custo da mesma.
+
+Não só isso, eles diminuiriam o aquecimento global em muito já que 
+queimaríamos menos combustíveis fosseis e carros elétricos seriam mais 
+viáveis e baratos. 
+
+Eles também não superaqueceriam, pois não há calor vazando, mantendo a 
+temperatura do ciclo constante.
+
 \section{Conclusões}
 
 O ciclo de Carnot estabelece a eficiência máxima teórica para qualquer motor térmico operando 
 entre dois reservatórios de temperatura. Nossa análise demonstra que alcançar 100\% de eficiência requer 
 condições fisicamente impossíveis: ou uma fonte de calor com temperatura infinita ou um sumidouro frio a 
 zero absoluto. Estes requisitos violam princípios termodinâmicos fundamentais, particularmente a primeira e 
-segunda leis. Embora o motor de Carnot permaneça uma construção teórica inestimável para entender os limites 
+segunda leis da termodinâmica. Embora o motor de Carnot permaneça uma construção teórica inestimável para entender os limites 
 da eficiência termodinâmica, motores práticos devem sempre operar abaixo deste máximo ideal devido à inevitável 
 dissipação de energia e aumento de entropia.
 
