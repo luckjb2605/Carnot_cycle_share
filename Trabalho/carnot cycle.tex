@@ -1,4 +1,4 @@
-\documentclass[12pt, twocolumn]{article}
+\documentclass[10pt, twocolumn]{article}
 \usepackage[portuguese]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath, amsfonts, amssymb}
@@ -11,20 +11,35 @@
 \usepackage{indentfirst}
 \usepackage{authblk}
 \usepackage{enumitem}
-\usepackage{newtxtext, newtxmath}
+\usepackage{lmodern}
 \usepackage{cleveref}
 \usepackage{abstract}
 \usepackage{hyphenat}
+\usepackage{float}
+\usepackage{microtype}
 
-\crefname{equation}{Eq.}{Eq.}
+\crefname{equation}{equação}{equação}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=magenta,
+    citecolor=red,
+    urlcolor=magenta
+}
 
 \geometry{a4paper, left=1.5cm, right=1.5cm, top=2cm, bottom=2cm, columnsep=1cm}
 \setstretch{1.1}
 
+\renewcommand{\thesection}{\Roman{section}.}
+\renewcommand{\thesubsection}{\Alph{subsection}.}
+
 \titleformat{\section}
-  {\normalfont\large\bfseries}{\thesection.}{0.5em}{}
+  {\centering\normalfont\normalsize\bfseries}{\thesection}{1em}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{1.2ex}{0.6ex}
+
 \titleformat{\subsection}
-  {\normalfont\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+  {\centering\normalfont\small\bfseries}{\thesubsection}{1em}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{1.2ex}{0.6ex}
 
 \renewcommand{\abstractname}{}
 \setlength{\absleftindent}{0pt}
@@ -35,7 +50,6 @@
 \setlength{\parindent}{1cm}
 
 \renewcommand\Authands{ e }
-\renewcommand\Authand{ e }
 
 \title{Motor de Carnot e os Limites Termodinâmicos da Eficiência}
 \author{Alice Reis}
@@ -51,7 +65,9 @@
 \exhyphenpenalty=10000
 
 \setlength{\parindent}{1cm}
-\setlength{\parskip}{5pt}
+\setlength{\parskip}{3pt}
+
+% \raggedbottom
 
 \begin{document}
 
@@ -146,62 +162,62 @@ de Carnot.
 
 Tendo isso em mente, descreveremos a eficiência como:
 
-\begin{equation}\label{eq:eficiencia}
+\begin{equation}\label{eficiencia}
 \text{Eficiência} = \frac{W_{\text{total}}}{Q_1}
 \end{equation}
 
 Calcularemos então, o trabalho feito em cada estágio. Para os processos isotérmicos podemos estabelecer:
 
-\begin{equation}\label{eq:work_iso_general}
+\begin{equation}\label{trab_iso}
 W_{\text{isot.}} = \int_{V_i}^{V_f} P \,dV
 \end{equation}
 
 E considerando a lei dos gases ideias:
 
-\begin{equation}\label{eq:ideal_gas_law}
+\begin{equation}\label{lei_gases_ideais}
 PV=nRT, \quad P=\frac{nRT}{V}
 \end{equation}
 
 Substituímos:
 
-\begin{equation}\label{eq:work_iso_subst}
+\begin{equation}\label{trab_iso_subst}
 W_{\text{isot.}} = \int_{V_i}^{V_f} \frac{nRT}{V} \,dV
 \end{equation}
 
 Tirando as constantes da integração, resta apenas integrar dV/V:
 
-\begin{equation}\label{eq:work_iso_integrated}
+\begin{equation}\label{trab_iso_integrado}
 W_{\text{isot.}} = nRT\ln\left({\frac{V_f}{V_i}}\right)
 \end{equation}
 
 É possível concluir então, que para o processo de expansão isotérmica teremos:
 
-\begin{equation}\label{eq:work_1to2}
+\begin{equation}\label{trab_1pra2}
 W_{1\rightarrow2} = nRT_{a}\ln\left({\frac{V_2}{V_1}}\right) =Q_{1\rightarrow2}
 \end{equation}
 
 Onde, da primeira lei da termodinâmica, podemos dizer que $W = Q$, já que não há diferença na temperatura (e portanto, $\Delta U = 0$). Para o processo de compressão isotérmica 
 obteremos, similarmente:
 
-\begin{equation}\label{eq:work_3to4}
+\begin{equation}\label{trab_3pra4}
 W_{3\rightarrow4} = nRT_{b}\ln\left({\frac{V_4}{V_3}}\right)=Q_{3\rightarrow4}
 \end{equation}
 
 Partiremos então para um melhor entendimento da relação entre calor e trabalho para os processos adiabáticos. 
 Para isso, recuperaremos a definição de capacidade térmica molar à volume constante:
 
-\begin{equation}\label{eq:cv_definition}
+\begin{equation}\label{def_cv}
 C_v = \frac{1}{n}\,\left(\frac{\partial Q}{\partial T}\right)_V
 \end{equation}
 
 Se o volume é constante, podemos inferir que $\ W = 0$ e, portanto, podemos igualar dU e dQ. 
 Isolando dU, integramos de ambos os lados para obter:
 
-\begin{equation}\label{eq:internal_energy}
+\begin{equation}\label{energia_interna}
 dU_v = dQ_v = nC_vdT,
 \end{equation}
 
-\begin{equation}\label{eq:internal_energy_2}
+\begin{equation}\label{energia_interna_2}
 \int_{U_i}^{U_f}dU = \int_{Ti}^{Tf}nC_v\,dT \rightarrow \Delta U = nC_v\Delta T
 \end{equation}
 
@@ -214,103 +230,357 @@ E como acabamos de demonstrar esse valor, basta substituir em:
 
 \vspace{2cm}
 
-\begin{equation}\label{eq:work_2to3}
+\begin{equation}\label{trab_2pra3}
 W_{2\rightarrow3} = -nC_v(T_b-T_a) = -\Delta U_{2\rightarrow3},
 \end{equation}
 
-\begin{equation}\label{eq:work_4to1}
+\begin{equation}\label{trab_4pra1}
 W_{4\rightarrow1} = -nC_v(T_a-T_b) = -\Delta U_{4\rightarrow1}
 \end{equation}
 
-Note que na \cref{eq:work_2to3} o trabalho está sendo feito pelo gás, representando direta e exclusivamente a 
-diminuição de sua energia interna. Mas então, W não deveriam ser positivo? Ele é! 
+Note que na \cref{trab_2pra3} o trabalho está sendo feito pelo gás, representando direta e exclusivamente a 
+diminuição de sua energia interna. Mas então, W não deveria ser positivo? Ele é! 
 Perceba que $(T_b-T_a)<0$ e, portanto, o termo inteiro é positivo!
 
 Note também que o trabalho e variação de energia interna para os dois processos adiabáticos são um o inverso 
 do outro. Essa relação será importante na hora de calcular a eficiência, já que, por isso, não precisaremos representá-los.
 
-Agora que definimos os parâmetros mais importantes das quatro etapas, voltaremos à \cref{eq:eficiencia}, e 
+Agora que definimos os parâmetros mais importantes das quatro etapas, voltaremos à \cref{eficiencia}, e 
 substituiremos o $W_{\text{total}}$ pela soma do trabalho feito pelo gás ao longo dos processos isotérmicos 
-(lembrando que os processos adiabáticos se anulam), e representaremos $Q_1$ por seu valor dado na \cref{eq:work_1to2}:
+(lembrando que os processos adiabáticos se anulam), e representaremos $Q_1$ por seu valor dado na \cref{trab_1pra2}:
 
-\begin{equation}\label{eq:eficiencia_expandida}
+\begin{equation}\label{eficiencia_expandida}
 \text{Eficiência} = \frac{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right) + nRT_{b}\ln\left({\frac{V_4}{V_3}}\right)}{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right)}
 \end{equation}
 
 Considerando que o processo geratriz dos termos foi de expansão adiabática, podemos escrever:
 
-\begin{equation}\label{eq:adiabatic1}
+\begin{equation}\label{adiab_tv_const}
 T_3 V_3^{\gamma-1} = T_4 V_4^{\gamma-1},\; \text{onde}
 \end{equation}
 
-\begin{equation}\label{eq:gamma_def}
+\begin{equation}\label{def_gamma}
 \gamma = \frac{C_p}{C_v}
 \end{equation}
 
 A fim de simplificar Cp, consideremos uma transformação à pressão constante. Então, 
 Da primeira lei da termodinâmica, e da definição de trabalho, podemos escrever:
 
-\begin{equation}\label{eq:qp_geral}
+\begin{equation}\label{1_lei_pressao_const}
 Q_p=\Delta U_p +W_p=\Delta U_p+P\Delta V
 \end{equation}
 
 Onde conhecemos sobre as relações dos gases ideais, e por motivos já discutidos, que:
 
-\begin{equation}\label{eq:ideal_gas_again}
+\begin{equation}\label{lei_gas_ideal_2}
 PV=nRT,
 \end{equation}
 
-\begin{equation}\label{eq:dU_relation}
+\begin{equation}\label{U_T_ideal}
 \Delta U_p = \Delta U_v = nC_v\Delta T    
 \end{equation}
 
-Substituindo as equações \cref{eq:dU_relation} e \cref{eq:ideal_gas_again} na \cref{eq:qp_geral}, obtemos:
+Substituindo a \cref{U_T_ideal} e \cref{lei_gas_ideal_2} na \cref{1_lei_pressao_const}, obtemos:
 
-\begin{equation}\label{eq:qp_calculated}
+\begin{equation}\label{1_lei_pc_subs}
 Q_p = nC_v\Delta T + nR\Delta T = n(C_v+R)\Delta T
 \end{equation}
 
 E sabemos que $Q_p = nC_p\Delta T$ (por derivação similar à que fizemos para $C_v$), portanto, 
 podemos afirmar que $C_p = C_v + R$\,.
 
-Finalmente, com esse resultado, podemos escrever, da \cref{eq:adiabatic1} e \cref{eq:gamma_def}:
+Finalmente, com esse resultado, podemos escrever, da \cref{adiab_tv_const} e \cref{def_gamma}:
 
-\begin{equation}\label{eq:adiabatic_rel1}
+\begin{equation}\label{adiab_tv_const_2}
 \left(\frac{T_2}{T_3}\right)^{C_v/R} = \frac{V_3}{V_2}
 \end{equation}
 
-\begin{equation}\label{eq:adiabatic_rel2}
+\begin{equation}\label{adiab_tv_const_3}
 \left(\frac{T_1}{T_4}\right)^{C_v/R} = \frac{V_4}{V_1}
 \end{equation}
 
 A partir da natureza do Ciclo, adicionamos que $T_1 = T_2$ e $T_3 = T_4$. Igualando então as equações e 
 substituindo os termos, concluímos que:
 
-\begin{equation}\label{eq:volume_relation}
+\begin{equation}\label{rel_volume}
 \frac{V_3}{V_4} = \frac{V_2}{V_1}
 \end{equation}
 
-Substituindo a \cref{eq:volume_relation} na \cref{eq:eficiencia_expandida} obtemos:
+Substituindo a \cref{rel_volume} na \cref{eficiencia_expandida} obtemos:
 
-\begin{equation}\label{eq:eficiencia_simplificada_2}
+\begin{equation}\label{eficiencia_simplificada}
 \text{Eficiência} = \frac{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right) + nRT_{b}\ln\left({\frac{V_2}{V_1}}\right)}{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right)}
 \end{equation}
 
 Cancelando os termos semelhantes, chegamos a:
 
-\begin{equation}\label{eq:eficiencia_simplificada}
+\begin{equation}\label{eficiencia_simplificada_2}
 \text{Eficiência} = \frac{T_a - T_b}{T_a}
 \end{equation}
 
 Ou ainda:
 
-\begin{equation}\label{eq:eficiencia_final}
+\begin{equation}\label{eficiencia_final}
 \eta = 1 - \frac{T_b}{T_a}
 \end{equation}
 
-A partir da \cref{eq:eficiencia_final}, observamos então que a eficiência só será 1 (100\%), 
+A partir da \cref{eficiencia_final}, observamos então que a eficiência só será 1 (100\%), 
 se ${T_b}/{T_a} = 0$. Ou seja, se $T_b = 0$ ou $T_a = \infty$. Ou seja, se a temperatura do reservatório mais frio 
 for zero absoluto ou a temperatura do reservatório mais quente for infinita. 
+
+\section{Diagrama P-V}
+
+Nessa seção, derivaremos as leis de formação das funções P(V) a partir da lei dos gases ideais.
+Apresentaremos um plot feito em python de um ciclo termodinâmico que segue a mesma ordem
+de processos do ciclo de carnot, mas sem a eficiencia perfeita. Já que reservatórios de temperatura
+infinita ou zero absoluto não seriam representáveis na figura. 
+
+Usaremos então da geometria e do cálculo para calcular a área embaixo das curvas, podendo-se
+assim, alternativamente chegar-se à uma representação algébrica do trabalho realizado no sistema.
+
+Vale ressaltar que para todos os processos utilizaremos o numero de mols $n = 1$, importaremos
+a constante R do scipy, usaremos volumes iniciais arbitrários $V_1 = 1L$ e $V_2 = 2L$ e temperatura
+dos reservatórios $T_b = 300^\circ K \approx 25^\circ C$ e $ T_a = 600^\circ K \approx 325^\circ C$.
+
+Para $\gamma$, usaremos 5/3, que é o equivalente a usar $C_v = 3/2 \, R$, a capacidade
+térmica molar a volume constante para gases monoatômicos.
+
+\subsection{Leis de Formação}
+
+A Lei dos gases ideais já foi extensivamente referenciada nesse documento, mas pelo bem da
+compreensão, revisitemos-na:
+
+\begin{equation}\label{lei_gases_ideais_3}
+  PV = nRT
+\end{equation}
+
+Diferentemente dos processos adiabáticos, é bem simples retirar uma lei de formação dessa equação
+para os processos isotérmicos. Considerando que nesses processos, a temperatura deve permanecer constante,
+o lado direito inteiro pode ser considerado uma constante. 
+
+Dividindo V dos dois lados, obtemos a primeira lei de formação:
+
+\begin{equation}\label{lei_form_iso}
+  P_{iso}(V) = \frac{nRT}{V}
+\end{equation}
+
+Para a segunda função, teremos de relembrar uma propriedade das transformações adiabáticas de
+gases ideais que é a de que $TV^{\gamma - 1}$ deve ser constante. Se isolarmos T na \cref{lei_gases_ideais_3}
+da lei dos gases ideais, e substituirmos esse valor na propriedade mencionada, obtemos:
+
+\begin{equation}\label{gas_ideal_T_Isolado}
+  PV = nRT \rightarrow T = \frac{PV}{nR}, \\
+\end{equation}
+
+\begin{equation}\label{subst_TV}
+  TV^{\gamma - 1} = \frac{PV}{nR} V^{\gamma - 1} = \frac{PV^{\gamma}}{nR}
+\end{equation}
+
+Portanto, podemos dizer que $PV^{\gamma - 1}$ também é uma constante, e, por isso:
+
+\begin{equation}\label{lei_form_adiab}
+  PV^{\gamma} = P_0V_0^{\gamma} \rightarrow P(V) = P_0 \left( \frac{V_0}{V} \right)^{\gamma}
+\end{equation}
+
+Da mesma propriedade, definimos os volumes $V_3$ e $V_4$, que serão essenciais para o plot:
+
+\begin{equation}\label{vol_3}
+  T_b V_3^{\gamma - 1} = T_a V_2^{\gamma - 1} \rightarrow V_3 = V_2 \left(\frac{T_a}{T_b} \right)^{\frac{1}{\gamma -1}},
+\end{equation}
+
+\begin{equation}\label{vol_4}
+    T_b V_4^{\gamma - 1} = T_a V_1^{\gamma - 1} \rightarrow V_4 = V_1 \left(\frac{T_a}{T_b} \right)^{\frac{1}{\gamma -1}}
+\end{equation}
+
+\subsection{Plot do Diagrama}
+
+Com as duas leis de formação generalizadas para os processos isotérmicos
+e adiabáticos, podemos plotar cada curva:
+
+\begin{equation}
+  P_{1 \rightarrow 2} = \frac{nRT_a}{V_{1 \rightarrow 2}}
+\end{equation}
+
+\begin{equation}
+  P_{2 \rightarrow 3} = P_2 \left( \frac{V_2}{V_{2 \rightarrow 3}} \right)^{\gamma}
+\end{equation}
+
+\begin{equation}
+  P_{3 \rightarrow 4} = \frac{nRT_a}{V_{3 \rightarrow 4}}
+\end{equation}
+
+\begin{equation}
+  P_{4 \rightarrow 1} = P_4 \left( \frac{V_4}{V_{4 \rightarrow 1}} \right)^{\gamma}
+\end{equation}
+
+Onde, dada a definição de trabalho na \cref{trab_iso}, perceba que a integral
+dessas funções nos dará o trabalho realizado em cada processo. E repare que,
+nos processos de compressão, $V_3 > V_4$ e $V_4 > V_1$, logo, $dV < 0$ e $W < 0$.
+Nesses casos, o trabalho está sendo feito no gás.
+
+\begin{figure}[H]
+   \includegraphics[width=1\linewidth]{diagrama_pv/diagrama_pv}
+   \caption{Diagrama P-V do ciclo de Carnot. Note que a área em roxo
+   representa tanto o trabalho realizado pelo, quanto o trabalhado realizado no gás. 
+   Não é difícil perceber que o gás realiza mais trabalho do que se é realizado nele. Mas, para 
+   entender realmente, não só essa diferença, como, novamente, entender a eficiência do sistema,
+   calculemos a área da figura fechada.}
+   \label{pv_diagram}
+\end{figure}
+
+\subsection{Derivando a eficiência a partir do diagrama}
+
+Calcularemos o trabalho total realizado no sistema somando as integrais das funções P(V) 
+para cada um dos procesoss do ciclo. No fim, dividiremos o resultado pelo calor absorvido que,
+como já discutido, sabemos que é igual ao trabalho realizado durante a expansão isotérmica.
+
+\begin{equation}\label{int_sum}
+\begin{split}
+  W_{total} = \;
+  & \left( \int_{V_1}^{V_2} \frac{nRT_a}{V} \, dV + \int_{V_2}^{V_3} P_2 \left( \frac{V_2}{V} \right)^{\gamma} dV \right)\\ + \;
+  & \left( \int_{V_3}^{V_4} \frac{nRT_b}{V} \, dV + \int_{V_4}^{V_1} P_4 \left( \frac{V_4}{V} \right)^{\gamma} dV \right)\\
+\end{split}
+\end{equation}
+
+Onde $V_3>V_4$ e $V_4>V_1$. Logo, podemos substituir as duas últimas integrais pelos seus inversos
+com os limites trocados. Além disso, podemos tirar as constantes da integração e ficar com:
+
+\begin{equation}\label{int_sum_2}
+\begin{split}
+  W_{total} = \;
+  & nRT_a \int_{V_1}^{V_2} \frac{1}{V}\,dV + 
+  P_2V_2^{\gamma} \int_{V_2}^{V_3} V^{-\gamma} dV \\ - \;
+  & nRT_b \int_{V_4}^{V_3} \frac{1}{V}\,dV - 
+  P_4V_4^{\gamma} \int_{V_1}^{V_4} V^{-\gamma} dV
+\end{split}
+\end{equation}
+
+Para melhor compreensão, separemos os dois processos. Para os processos isotérmicos, teremos:
+
+\begin{equation}\label{int_iso}
+W_{iso.} = nRT_a \ln{\left(\frac{V_2}{V_1}\right)} - nRT_b \ln{\left(\frac{V_3}{V_4}\right)}
+\end{equation}
+
+E para os processos adiabáticos:
+
+\begin{equation}\label{trab_adiab}
+    W_{adi.} = \;
+    P_2V_2^{\gamma} \int_{V_2}^{V_3} \frac{V^{1 - \gamma}}{1 - \gamma} dV - 
+    P_4V_4^{\gamma} \int_{V_1}^{V_4} \frac{V^{1 - \gamma}}{1 - \gamma} dV
+\end{equation}
+\begin{equation}\label{trab_adiab_2}
+  W_{adi.} = \;
+  \frac{P_2V_2^{\gamma}}{1 - \gamma} \int_{V_2}^{V_3} V^{1 - \gamma} dV \, - \,
+  \frac{P_4V_4^{\gamma}}{1 - \gamma} \int_{V_1}^{V_4} V^{1 - \gamma} dV,
+\end{equation}
+\begin{equation}\label{trab_adiab_3}
+  W_{adi.} = \;
+  \frac{P_2V_2^{\gamma}}{1 - \gamma} \, \left[ V_3^{1 - \gamma} - V_2^{1 - \gamma} \right] \, - \,
+  \frac{P_4V_4^{\gamma}}{1 - \gamma} \, \left[ V_4^{1 - \gamma} - V_1^{1 - \gamma} \right]
+\end{equation}
+
+Botemos então $V_2^{1-\gamma}$ e $V_4^{1 - \gamma}$ em evidência:
+
+\begin{equation}\label{trab_adiab_4}
+\begin{split}
+  W_{adi.} = \;
+       & \frac{P_2V_2^{\gamma}}{1 - \gamma} \, V_2^{1 - \gamma} \left[\left(\frac{V_3}{V_2}\right)^{1 - \gamma} - 1 \right] \\ 
+  - \; & \frac{P_4V_4^{\gamma}}{1 - \gamma} \, V_4^{1 - \gamma} \left[1 - \left(\frac{V_1}{V_4}\right)^{1 - \gamma} \right]
+\end{split}
+\end{equation}
+
+Simplificando e multiplicando em cima e embaixo por -1:
+
+\begin{equation}\label{trab_adiab_5}
+  \begin{split}
+    W_{adi.} = \;
+      &\frac{P_2V_2}{\gamma - 1} \left[1 - \left(\frac{V_3}{V_2}\right)^{1 - \gamma}\right] \\ - \;
+    - &\frac{P_4V_4}{\gamma - 1} \left[\left(\frac{V_1}{V_4}\right)^{1 - \gamma}- 1 \right]
+  \end{split}
+\end{equation}
+
+Realizando a multiplicação distribuitiva:
+
+\begin{equation}\label{trab_adiab_6}
+  \begin{split}
+    W_{adi.} = \;
+    & \frac{P_2V_2 - P_2V_2 \left(\frac{V3}{V2}\right) \left(\frac{V2}{V3}\right)^{\gamma}}{\gamma - 1} \\ - \;
+    & \frac{P_4V_4 \left(\frac{V1}{V4}\right) \left(\frac{V4}{V1}\right)^{\gamma} - P_4V_4}{\gamma - 1}
+  \end{split}
+\end{equation}
+
+Onde sabemos que $PV^{\gamma} = \text{constante}$ e, portanto, $P_2V_2^{\gamma}=P_3V_3^{\gamma}$ e $P_4V_4^{\gamma}=P_1V_1^{\gamma}$. Isolando $P_3$ e $P_1,$
+ficamos com:
+
+\begin{equation}\label{trab_adiab_7}
+  \begin{split}
+  & P_3 = P_2\left(\frac{V_2}{V_3}\right)^{\gamma}, \\
+  & P_1 = P_4\left(\frac{V_4}{V_1}\right)^{\gamma}
+  \end{split}
+\end{equation}
+
+Substituindo na \cref{trab_adiab_6}:
+
+\begin{equation}\label{trab_adiab_8}
+W_{adi.} = 
+\frac{P_2V_2 - P_3V_3}{\gamma - 1} \; - \;
+\frac{P_1V_1 - P_4V_4}{\gamma - 1}
+\end{equation}
+
+E finalmente, a partir da \cref{lei_gases_ideais_3}, da lei dos gases ideais:
+
+\begin{equation}
+W_{adi.} = 
+\frac{nRT_2 - nrT_3}{\gamma - 1} \; - \;
+\frac{nRT_1 - nRT_4}{\gamma - 1}
+\end{equation}
+
+Substituimos R por seu valor $R = C_v (\gamma - 1)$ e substituimos as temperaturas pelos seus respectivos valores
+dada a etapa do ciclo. $(T_1 = T_2 = T_a)$ e $(T_3 = T_4 = T_b)$
+
+\begin{equation}
+W_{adi.} = 
+\frac{nC_v (\gamma - 1) (T_a - T_b)}{\gamma - 1} \; - \;
+\frac{nC_v (\gamma - 1) (T_a - T_b)}{\gamma - 1}
+\end{equation}
+
+Simplificando,
+
+\begin{equation}
+  W_{adi.} = 
+  nC_v (T_a - T_b) \; - \; 
+  nC_v (T_a - T_b) \; = \;
+  0
+\end{equation}
+
+Sabendo agora que a soma do trabalho feito nos processos adiabáticos é zero, voltemos a soma dos processos isotérmicos.
+
+\begin{equation}
+  W_{total} = W_{iso.} =
+  nRT_a \ln{\left(\frac{V_2}{V_1}\right)} - nRT_b \ln{\left(\frac{V_3}{V_4}\right)}
+\end{equation}
+
+Como demonstramos no pdf, $V_2/V_1 = V_3/V_4$. Então:
+
+\begin{equation}
+  W_{total} = nRT_a \ln{\left(\frac{V_2}{V_1}\right)} - nRT_b \ln{\left(\frac{V_2}{V_1}\right)}
+\end{equation}
+
+Para encontrar a eficiência, dividimos esse trabalho total pelo calor absorvido pelo motor. E sabemos que 
+esse calor é igual ao trabalho realizado pela expansão isotérmica, pois como não há variação de temperatura,
+também não haverá variação de energia interna. Da primeira lei da termodinâmica, podemos afirmar então
+que todo o calor absorvido é convertido em trabalho, e vice-versa!
+
+\begin{equation}
+  \frac{W_{total}}{Q_{absorvido}} = \frac{nRT_a \ln{\left(\frac{V_2}{V_1}\right)} - 
+  nRT_b \ln{\left(\frac{V_2}{V_1}\right)}}{nRT_a \ln{\left(\frac{V_2}{V_1}\right)}}
+\end{equation}
+
+Simplificando o termo semelhante $nR \ln{\left(V_2/V_1\right)}$:
+
+\begin{equation}
+  \text{Eficiência} = \frac{T_a - T_b}{T_a} = 1 - \frac{T_b}{T_a}
+\end{equation}
 
 \section{Porque um Motor não pode ter 100\% de eficiência}
 
@@ -325,7 +595,7 @@ nada ou mantê-la no mesmo sistema para sempre.
 
 Para que um motor tivesse 100\% de eficiência, seria necessário que a fonte de calor tivesse um valor 
 infinitamente alto ou que a fonte fria tivesse o valor igual a 0 
-(e um lugar infinitamente grande para o gás expandir). Isso pode ser observado na \cref{eq:eficiencia_final}.
+(e um lugar infinitamente grande para o gás expandir). Isso pode ser observado na \cref{eficiencia_final}.
 
 Se $T_b=0$, então $0/\text{qualquer coisa}=0$ e $1-0=100\%$. Se $T_a=\infty$, qualquer coisa/$\infty$ tende a 0 e
 , portanto, Eficiência$=100\%$.
