@@ -100,8 +100,11 @@ apenas das temperaturas de fontes quentes e frias.
 O modelo de Carnot foi importante, e é até hoje, pois foi ele o utilizado para fazer as máquinas do século XIX 
 na Revolução Industrial. Além disso, até hoje ele é o modelo mais usado para fabricação de motores no geral.
 
-A partir disso, foi possível mostrar que era impossível criar uma máquina com 100\% de eficiência, 
-devido principalmente a não se adequar à primeira lei da termodinâmica.
+O modelo de Carnot foi importante para a construçoes de maquinas na revolução 
+industrial. Até hoje ele é um modelo de conceito basico para a construção de uma 
+maquina. A partir dele, foi possível mostrar que era impossível criar uma máquina 
+com 100\% de eficiência, por nao se adequar a primeira lei da termodinâmica e nao 
+seguir o funcionamento basico das trocas de calor.
 
 \section{O Motor de Carnot}
 
@@ -214,7 +217,7 @@ Se o volume é constante, podemos inferir que $\ W = 0$ e, portanto, podemos igu
 Isolando dU, integramos de ambos os lados para obter:
 
 \begin{equation}\label{energia_interna}
-dU_v = dQ_v = nC_vdT,
+dU = dQ_v = nC_vdT,
 \end{equation}
 
 \begin{equation}\label{energia_interna_2}
@@ -253,17 +256,22 @@ substituiremos o $W_{\text{total}}$ pela soma do trabalho feito pelo gás ao lon
 \text{Eficiência} = \frac{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right) + nRT_{b}\ln\left({\frac{V_4}{V_3}}\right)}{nRT_{a}\ln\left({\frac{V_2}{V_1}}\right)}
 \end{equation}
 
-Considerando que o processo geratriz dos termos foi de expansão adiabática, podemos escrever:
+Considerando que os processos $2\rightarrow3$ e $4\rightarrow1$ foram de expansão 
+adiabática, podemos escrever:
 
 \begin{equation}\label{adiab_tv_const}
-T_3 V_3^{\gamma-1} = T_4 V_4^{\gamma-1},\; \text{onde}
+T_2 V_2^{\gamma-1} = T_3 V_3^{\gamma-1},\; \text{e}
+\end{equation}
+
+\begin{equation}\label{adiab_tv_const_2}
+T_4 V_4^{\gamma-1} = T_1 V_1^{\gamma-1},\; \text{onde}
 \end{equation}
 
 \begin{equation}\label{def_gamma}
 \gamma = \frac{C_p}{C_v}
 \end{equation}
 
-A fim de simplificar Cp, consideremos uma transformação à pressão constante. Então, 
+A fim de simplificar Cp, consideremos agora uma transformação isobárica. Então, 
 Da primeira lei da termodinâmica, e da definição de trabalho, podemos escrever:
 
 \begin{equation}\label{1_lei_pressao_const}
@@ -289,17 +297,17 @@ Q_p = nC_v\Delta T + nR\Delta T = n(C_v+R)\Delta T
 E sabemos que $Q_p = nC_p\Delta T$ (por derivação similar à que fizemos para $C_v$), portanto, 
 podemos afirmar que $C_p = C_v + R$\,.
 
-Finalmente, com esse resultado, podemos escrever, da \cref{adiab_tv_const} e \cref{def_gamma}:
+Finalmente, com esse resultado, podemos escrever, da \cref{adiab_tv_const}, da \cref{adiab_tv_const_2} e \cref{def_gamma}:
 
-\begin{equation}\label{adiab_tv_const_2}
+\begin{equation}\label{adiab_tv_const_3}
 \left(\frac{T_2}{T_3}\right)^{C_v/R} = \frac{V_3}{V_2}
 \end{equation}
 
-\begin{equation}\label{adiab_tv_const_3}
+\begin{equation}\label{adiab_tv_const_4}
 \left(\frac{T_1}{T_4}\right)^{C_v/R} = \frac{V_4}{V_1}
 \end{equation}
 
-A partir da natureza do Ciclo, adicionamos que $T_1 = T_2$ e $T_3 = T_4$. Igualando então as equações e 
+A partir da natureza do Ciclo, adicionamos que $T_1 = T_2 = T_a$ e $T_3 = T_4 = T_b$. Igualando então as equações e 
 substituindo os termos, concluímos que:
 
 \begin{equation}\label{rel_volume}
@@ -642,13 +650,11 @@ mantendo a temperatura do ciclo constante.
 
 \section{Conclusões}
 
-O ciclo de Carnot estabelece a eficiência máxima teórica para qualquer motor térmico operando 
-entre dois reservatórios de temperatura. Nossa análise demonstra que alcançar 100\% de eficiência requer 
-condições fisicamente impossíveis: ou uma fonte de calor com temperatura infinita ou um sumidouro frio a 
-zero absoluto. Estes requisitos violam princípios termodinâmicos fundamentais, particularmente a primeira e 
-segunda leis da termodinâmica. Embora o motor de Carnot permaneça uma construção teórica inestimável para entender os limites 
-da eficiência termodinâmica, motores práticos devem sempre operar abaixo deste máximo ideal devido à inevitável 
-dissipação de energia e aumento de entropia.
+Por fim, entendemos que o ciclo de Carnot nos mostra o porque é impossivel construir 
+uma maquina com 100\% de eficiencia. Um modelo pensado à base de uma ideia, ignorando 
+conceitos basicos da fisica, mas que, com isso, nos exemplifica a razao dessa 
+impossibilidade. Com esse modelo, é possivel avaliar o desempenho de máquinas e 
+compreender outros ciclos termodinamicos, além de incentivar a pesquisa na area.
 
 \begin{thebibliography}{9}
 \bibitem{1} \href{http://hyperphysics.phy-astr.gsu.edu/hbase/thermo/carnotcon.html#c1}{Nave, C.R. \emph{Carnot Cycle Concepts}. Georgia State University}
