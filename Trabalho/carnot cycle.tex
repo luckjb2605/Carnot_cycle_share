@@ -99,14 +99,17 @@
   físico discute a importância dos motores a vapor e apresenta seu motor reversível, cuja eficiência dependia 
   apenas das temperaturas de fontes quentes e frias.
 
-O modelo de Carnot foi importante, e é até hoje, pois foi ele o utilizado para fazer as máquinas do século XIX 
-na Revolução Industrial. Além disso, até hoje ele é o modelo mais usado para fabricação de motores no geral.
+  O modelo de Carnot foi extremamente importante para a construçoes de maquinas na revolução 
+  industrial, e até hoje ele é um modelo de conceito básico para a construção de diversas
+  máquinas. A partir dele, foi possível mostrar que era impossível criar uma máquina 
+  com 100\% de eficiência, por não se adequar a primeira lei da termodinâmica e não 
+  seguir o funcionamento básico das trocas de calor.
 
-O modelo de Carnot foi importante para a construçoes de maquinas na revolução 
-industrial. Até hoje ele é um modelo de conceito basico para a construção de uma 
-maquina. A partir dele, foi possível mostrar que era impossível criar uma máquina 
-com 100\% de eficiência, por nao se adequar a primeira lei da termodinâmica e nao 
-seguir o funcionamento basico das trocas de calor.
+  Explicaremos mais a fundo o porque da impossibilidade, a partir
+  da equação fundamental da eficiência. Essa, que derivaremos de duas
+  formas distintas, dentre elas, a partir do diagrama P-V, que plotamos
+  usando Python. 
+
 
 \section{O Motor de Carnot}
 
@@ -465,6 +468,8 @@ como já discutido, sabemos que é igual ao trabalho realizado durante a expans�
 \end{split}
 \end{equation}
 
+\vspace{0.5cm}
+
 Onde $V_3>V_4$ e $V_4>V_1$. Logo, podemos substituir as duas últimas integrais pelos seus inversos
 com os limites trocados. Além disso, podemos tirar as constantes da integração e ficar com:
 
@@ -595,6 +600,8 @@ Como demonstramos no pdf, $V_2/V_1 = V_3/V_4$. Então:
 
 Para encontrar a eficiência, dividimos esse trabalho total pelo calor absorvido pelo motor que, como discutimos
 anteriormente, é igual ao trabalho realizado pela expansão isotérmica.
+
+\vspace{-1\baselineskip}
 
 \begin{equation}
   \frac{W_{total}}{Q_{absorvido}} = \frac{nRT_a \ln{\left(\frac{V_2}{V_1}\right)} - 
