@@ -21,36 +21,36 @@
 \crefname{equation}{equação}{equação}
 
 \hypersetup{
-    colorlinks=true,
-    linkcolor=magenta,
-    citecolor=red,
-    urlcolor=cyan
-}
-
-\geometry{a4paper, left=1.5cm, right=1.5cm, top=2cm, bottom=2cm, columnsep=1cm}
-\setstretch{1.1}
-
-\renewcommand{\thesection}{\Roman{section}.}
-\renewcommand{\thesubsection}{\Alph{subsection}.}
-
-\titleformat{\section}
+  colorlinks=true,
+  linkcolor=magenta,
+  citecolor=red,
+  urlcolor=cyan
+  }
+  
+  \geometry{a4paper, left=1.5cm, right=1.5cm, top=2cm, bottom=2cm, columnsep=1cm}
+  \setstretch{1.1}
+  
+  \renewcommand{\thesection}{\Roman{section}.}
+  \renewcommand{\thesubsection}{\Alph{subsection}.}
+  
+  \titleformat{\section}
   {\centering\normalfont\normalsize\bfseries}{\thesection}{1em}{\MakeUppercase}
-\titlespacing*{\section}{0pt}{1.2ex}{0.6ex}
-
-\titleformat{\subsection}
+  \titlespacing*{\section}{0pt}{1.2ex}{0.6ex}
+  
+  \titleformat{\subsection}
   {\centering\normalfont\small\bfseries}{\thesubsection}{1em}{\MakeUppercase}
-\titlespacing*{\section}{0pt}{1.2ex}{0.6ex}
-
-\renewcommand{\abstractname}{}
-\setlength{\absleftindent}{0pt}
-\setlength{\absrightindent}{0pt}
-
-\setlist[enumerate,1]{label=\Alph*:, ref=\Alph*}
-
-\setlength{\parindent}{1cm}
-
-\renewcommand\Authands{ e }
-
+  \titlespacing*{\section}{0pt}{1.2ex}{0.6ex}
+  
+  \renewcommand{\abstractname}{}
+  \setlength{\absleftindent}{0pt}
+  \setlength{\absrightindent}{0pt}
+  
+  \setlist[enumerate,1]{label=\Alph*:, ref=\Alph*}
+  
+  \setlength{\parindent}{1cm}
+  
+  \renewcommand\Authands{ e }
+  
 \title{Motor de Carnot e os Limites Termodinâmicos da Eficiência}
 \author{Alice Reis}
 \author{João Guilherme}
@@ -61,7 +61,11 @@
 \affil{CAP-UFRJ}
 \date{Outubro 2025}
 
-\hyphenpenalty=10000
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+
+\hyphenpenalty=500
 \exhyphenpenalty=10000
 
 \setlength{\parindent}{1cm}
@@ -72,30 +76,28 @@
 \begin{document}
 
 \twocolumn[
-\begin{@twocolumnfalse}
-\maketitle
-\begin{abstract}
-\noindent
-
- No presente arquivo, buscamos apresentar e explicar o funcionamento do motor de Carnot. Tal ciclo termodinâmico 
- foi teorizado por Sadi Carnot com o intuito de estabelecer a máxima eficiência dos motores térmicos operando
- entre dois reservatórios de temperatura, um de alta temperatura ($T_a$), e outro de baixa ($T_b$). Discutiremos 
- as quatro etapas e derivaremos a equação fundamental da eficiência $\eta = 1 - T_b/T_a$ para então explicar a 
- impossibilidade teórica de realmente alcançar 100\% de eficiência. Além disso, analisaremos as contradições às 
- leis da termodinâmicas do motor.
-
-\end{abstract}
-\bigskip
-\end{@twocolumnfalse}
-]
-
-\section{Introdução}
-
-Sadi Carnot (1796-1832) foi um importante cientista francês, filho de um dos generais de Napoleão Bonaparte. 
-Em sua obra de 1824, Réflexions sur la puissance motrice du feu et sur les machines propres à développer cette 
-puissance (Reflexões sobre a Potência Motriz do Fogo e Máquinas Próprias para Aumentar essa Potência), o 
-físico discute a importância dos motores a vapor e apresenta seu motor reversível, cuja eficiência dependia 
-apenas das temperaturas de fontes quentes e frias.
+  \begin{@twocolumnfalse}
+    \maketitle
+    \begin{abstract}
+    \noindent
+    No presente arquivo, buscamos apresentar e explicar o funcionamento do motor de Carnot. Tal ciclo termodinâmico 
+    foi teorizado por Sadi Carnot com o intuito de estabelecer a máxima eficiência dos motores térmicos operando
+    entre dois reservatórios de temperatura, um de alta temperatura ($T_a$), e outro de baixa ($T_b$). Discutiremos
+    as quatro etapas e derivaremos a equação fundamental da eficiência $\eta = 1 - T_b/T_a$ para então explicar a        
+    impossibilidade teórica de realmente alcançar 100\% de eficiência. Além disso, analisaremos as contradições às 
+    leis da termodinâmicas do motor.
+    \end{abstract}
+    \bigskip
+  \end{@twocolumnfalse}
+  ]
+  
+  \section{Introdução}
+  
+  Sadi Carnot (1796-1832) foi um importante cientista francês, filho de um dos generais de Napoleão Bonaparte. 
+  Em sua obra de 1824, Réflexions sur la puissance motrice du feu et sur les machines propres à développer cette 
+  puissance (Reflexões sobre a Potência Motriz do Fogo e Máquinas Próprias para Aumentar essa Potência), o 
+  físico discute a importância dos motores a vapor e apresenta seu motor reversível, cuja eficiência dependia 
+  apenas das temperaturas de fontes quentes e frias.
 
 O modelo de Carnot foi importante, e é até hoje, pois foi ele o utilizado para fazer as máquinas do século XIX 
 na Revolução Industrial. Além disso, até hoje ele é o modelo mais usado para fabricação de motores no geral.
@@ -231,11 +233,13 @@ Sendo possível desprezar a diferença de volume.
 Considerando $Q = 0$ para os processos adiabáticos, teremos que $|W| = |\Delta U|$ . 
 E como acabamos de demonstrar esse valor, basta substituir em:
 
-\vspace{2cm}
+\vspace{-0.5\baselineskip}
 
 \begin{equation}\label{trab_2pra3}
 W_{2\rightarrow3} = -nC_v(T_b-T_a) = -\Delta U_{2\rightarrow3},
 \end{equation}
+
+\vspace{-0.5\baselineskip}
 
 \begin{equation}\label{trab_4pra1}
 W_{4\rightarrow1} = -nC_v(T_a-T_b) = -\Delta U_{4\rightarrow1}
@@ -294,6 +298,8 @@ Substituindo a \cref{U_T_ideal} e \cref{lei_gas_ideal_2} na \cref{1_lei_pressao_
 Q_p = nC_v\Delta T + nR\Delta T = n(C_v+R)\Delta T
 \end{equation}
 
+\vspace{0.5cm}
+
 E sabemos que $Q_p = nC_p\Delta T$ (por derivação similar à que fizemos para $C_v$), portanto, 
 podemos afirmar que $C_p = C_v + R$\,.
 
@@ -346,6 +352,8 @@ infinita ou zero absoluto não seriam representáveis na figura.
 Usaremos então da geometria e do cálculo para calcular a área embaixo das curvas, podendo-se
 assim, alternativamente chegar-se à uma representação algébrica do trabalho realizado no sistema.
 
+\vspace{0.7cm}
+
 Vale ressaltar que para todos os processos utilizaremos o numero de mols $n = 1$, importaremos
 a constante R do scipy, usaremos volumes iniciais arbitrários $V_1 = 1L$ e $V_2 = 2L$ e temperatura
 dos reservatórios $T_b = 300^\circ K \approx 25^\circ C$ e $ T_a = 600^\circ K \approx 325^\circ C$.
@@ -386,11 +394,15 @@ da lei dos gases ideais, e substituirmos esse valor na propriedade mencionada, o
 
 Portanto, podemos dizer que $PV^{\gamma - 1}$ também é uma constante, e, por isso:
 
+\vspace{-0.5\baselineskip}
+
 \begin{equation}\label{lei_form_adiab}
   PV^{\gamma} = P_0V_0^{\gamma} \rightarrow P(V) = P_0 \left( \frac{V_0}{V} \right)^{\gamma}
 \end{equation}
 
 Da mesma propriedade, definimos os volumes $V_3$ e $V_4$, que serão essenciais para o plot:
+
+\vspace{-0.5\baselineskip}
 
 \begin{equation}\label{vol_3}
   T_b V_3^{\gamma - 1} = T_a V_2^{\gamma - 1} \rightarrow V_3 = V_2 \left(\frac{T_a}{T_b} \right)^{\frac{1}{\gamma -1}},
@@ -435,6 +447,9 @@ Nesses casos, o trabalho está sendo feito no gás.
    calculemos a área da figura fechada.}
    \label{pv_diagram}
 \end{figure}
+
+\setlength{\parindent}{1cm}
+\setlength{\parskip}{2pt}
 
 \subsection{Derivando a eficiência a partir do diagrama}
 
@@ -507,6 +522,8 @@ Simplificando e multiplicando em cima e embaixo por -1:
   \end{split}
 \end{equation}
 
+\vspace{0.3cm}
+
 Realizando a multiplicação distribuitiva:
 
 \begin{equation}\label{trab_adiab_6}
@@ -554,6 +571,8 @@ W_{adi.} =
 
 Simplificando,
 
+\vspace{-0.5\baselineskip}
+
 \begin{equation}
   W_{adi.} = 
   nC_v (T_a - T_b) \; - \; 
@@ -574,10 +593,8 @@ Como demonstramos no pdf, $V_2/V_1 = V_3/V_4$. Então:
   W_{total} = nRT_a \ln{\left(\frac{V_2}{V_1}\right)} - nRT_b \ln{\left(\frac{V_2}{V_1}\right)}
 \end{equation}
 
-Para encontrar a eficiência, dividimos esse trabalho total pelo calor absorvido pelo motor. E sabemos que 
-esse calor é igual ao trabalho realizado pela expansão isotérmica, pois como não há variação de temperatura,
-também não haverá variação de energia interna. Da primeira lei da termodinâmica, podemos afirmar então
-que todo o calor absorvido é convertido em trabalho, e vice-versa!
+Para encontrar a eficiência, dividimos esse trabalho total pelo calor absorvido pelo motor que, como discutimos
+anteriormente, é igual ao trabalho realizado pela expansão isotérmica.
 
 \begin{equation}
   \frac{W_{total}}{Q_{absorvido}} = \frac{nRT_a \ln{\left(\frac{V_2}{V_1}\right)} - 
@@ -604,9 +621,6 @@ nada ou mantê-la no mesmo sistema para sempre.
 Para que um motor tivesse 100\% de eficiência, seria necessário que a fonte de calor tivesse um valor 
 infinitamente alto ou que a fonte fria tivesse o valor igual a 0 
 (e um lugar infinitamente grande para o gás expandir). Isso pode ser observado na \cref{eficiencia_final}.
-
-Se $T_b=0$, então $0/\text{qualquer coisa}=0$ e $1-0=100\%$. Se $T_a=\infty$, qualquer coisa/$\infty$ tende a 0 e
-, portanto, Eficiência$=100\%$.
 
 Não existe uma fonte de calor infinita, pois seria necessário algo que vai contra a lei de que a energia tem 
 que vir de algum lugar, já que não há energia infinita no universo.
